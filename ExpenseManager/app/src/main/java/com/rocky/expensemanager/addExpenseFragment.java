@@ -18,11 +18,17 @@ import android.widget.TextView;
  */
 public class addExpenseFragment extends DialogFragment {
 
+    String title = "Money";
 
     public addExpenseFragment() {
         // Required empty public constructor
     }
 
+    public void flipTitle() {
+        String temp = getActivity().getTitle().toString();
+        getActivity().setTitle(title);
+        title = temp;
+    }
 
     @Nullable
     @Override
@@ -30,6 +36,7 @@ public class addExpenseFragment extends DialogFragment {
         View v=inflater.inflate(R.layout.fragment_add_expense,container,false);
         final EditText expense=(EditText)v.findViewById(R.id.expense_value);
         Button b=(Button)v.findViewById(R.id.add);
+        flipTitle();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +46,7 @@ public class addExpenseFragment extends DialogFragment {
                 getDialog().dismiss();
             }
         });
+        flipTitle();
         return v;
     }
 }
